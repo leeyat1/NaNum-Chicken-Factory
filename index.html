@@ -4,155 +4,266 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NaNum Chicken Factory | Douglasville, GA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
+    --flame-1:#ff6a3d;
+    --flame-2:#c81d0f;
     --red:#b6231c;
     --dark-red:#7a1712;
-    --gold:#e8a13c;
+    --gold:#ffb703;
+    --gold-deep:#e8a13c;
     --cream:#fff8ee;
+    --ink:#1a1512;
     --charcoal:#221b17;
-    --gray:#5c5450;
+    --gray:#6b6059;
+    --radius:18px;
+    --shadow:0 10px 28px rgba(26,21,18,.10);
+    --shadow-lg:0 22px 48px rgba(26,21,18,.22);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:'Segoe UI', Helvetica, Arial, sans-serif;
-    color:var(--charcoal);
+    font-family:'Inter', Helvetica, Arial, sans-serif;
+    color:var(--ink);
     background:var(--cream);
-    line-height:1.6;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
   }
+  h1,h2,h3,.logo,.nav-cta,.btn{font-family:'Poppins', 'Inter', sans-serif;}
   a{color:inherit;text-decoration:none;}
   img{max-width:100%;display:block;}
-  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
 
   /* Photo placeholder */
   .photo-placeholder{
-    background:repeating-linear-gradient(45deg,#eee0cc,#eee0cc 10px,#f5ead9 10px,#f5ead9 20px);
-    border:2px dashed #c9a875;
-    color:#8a6d42;
+    background:linear-gradient(135deg,#ffe9d2,#ffd7ac);
+    border:2px dashed rgba(184,35,28,.3);
+    color:#9c6a30;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    font-size:14px;
-    font-weight:600;
-    border-radius:8px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.3px;
+    border-radius:var(--radius);
     padding:20px;
+    transition:transform .35s ease, box-shadow .35s ease;
   }
+
+  /* Eyebrow + section titles */
+  .eyebrow{
+    display:block;text-align:center;
+    font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--red);margin-bottom:10px;
+  }
+  h2.section-title{
+    font-size:34px;text-align:center;font-weight:800;margin-bottom:6px;color:var(--ink);letter-spacing:-.5px;
+  }
+  h2.section-title::after{
+    content:'';display:block;width:60px;height:4px;margin:16px auto 0;border-radius:2px;
+    background:linear-gradient(90deg,var(--gold),var(--flame-2));
+  }
+  .align-left{text-align:left;}
+  .align-left::after{margin:16px 0 0;}
+  .eyebrow.align-left{text-align:left;}
+  p.section-sub{text-align:center;color:var(--gray);margin-bottom:48px;font-size:16px;}
+
+  section{padding:80px 0;}
 
   /* Header */
   header{
     position:sticky;top:0;z-index:100;
-    background:var(--charcoal);
-    color:#fff;
+    background:rgba(26,21,18,.88);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(255,183,3,.15);
   }
   .nav-wrap{
     display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;
+    padding:16px 24px;
   }
   .logo{
-    font-size:22px;font-weight:800;letter-spacing:.5px;
-    color:var(--gold);
+    font-size:22px;font-weight:800;letter-spacing:.3px;color:#fff;
   }
-  .logo span{color:#fff;}
-  nav ul{list-style:none;display:flex;gap:28px;}
-  nav a{font-weight:600;font-size:15px;}
-  nav a:hover{color:var(--gold);}
+  .logo span{
+    background:linear-gradient(90deg,var(--gold),var(--flame-1));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  nav ul{list-style:none;display:flex;gap:30px;}
+  nav a{font-weight:600;font-size:14.5px;color:#e9ded4;position:relative;padding:4px 0;}
+  nav a::after{
+    content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;
+    background:var(--gold);transition:width .25s ease;
+  }
+  nav a:hover{color:#fff;}
+  nav a:hover::after{width:100%;}
   .nav-cta{
-    background:var(--red);color:#fff;padding:9px 18px;border-radius:6px;font-weight:700;
+    background:linear-gradient(135deg,var(--flame-1),var(--flame-2));
+    color:#fff;padding:10px 22px;border-radius:999px;font-weight:700;font-size:14.5px;
+    box-shadow:0 6px 18px rgba(200,29,15,.35);
+    transition:transform .25s ease, box-shadow .25s ease;
   }
-  .nav-cta:hover{background:var(--dark-red);}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(200,29,15,.45);}
 
   /* Hero */
   .hero{
     position:relative;
-    padding:70px 0 90px;
-    background:linear-gradient(135deg, var(--dark-red), var(--red));
+    padding:84px 0 96px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,183,3,.25), transparent 45%),
+      radial-gradient(circle at 85% 80%, rgba(255,106,61,.25), transparent 45%),
+      linear-gradient(135deg, var(--ink), var(--dark-red) 55%, var(--red));
     color:#fff;
     text-align:center;
+    overflow:hidden;
   }
-  .hero h1{font-size:44px;font-weight:900;margin-bottom:12px;}
-  .hero p.tag{font-size:19px;color:var(--gold);font-weight:600;margin-bottom:28px;}
+  .hero-badge{
+    display:inline-block;padding:8px 18px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.5px;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);
+    margin-bottom:22px;animation:fadeUp .7s ease .05s both;
+  }
+  .hero h1{
+    font-size:50px;font-weight:900;margin-bottom:14px;letter-spacing:-1px;line-height:1.08;
+    animation:fadeUp .7s ease .15s both;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(90deg,var(--gold),#ffd873);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.tag{
+    font-size:19px;color:#ffe3c2;font-weight:600;margin-bottom:32px;
+    animation:fadeUp .7s ease .25s both;
+  }
   .hero-photo{
-    max-width:900px;margin:0 auto 32px;height:auto;
+    max-width:900px;margin:0 auto 34px;height:auto;
+    border-radius:22px;box-shadow:var(--shadow-lg);
+    border:4px solid rgba(255,255,255,.15);
+    animation:fadeUp .8s ease .35s both;
+    transition:transform .5s ease, box-shadow .5s ease;
   }
-  /* Only applies while it's still a text placeholder box; once you swap
-     in a real <img class="hero-photo">, it drops away and the image
-     displays at its own natural size (scaled to fit max-width:900px). */
-  .hero-photo.photo-placeholder{
-    min-height:260px;
+  .hero-photo:hover{transform:scale(1.015);box-shadow:0 26px 60px rgba(0,0,0,.35);}
+  .hero-photo.photo-placeholder{min-height:260px;}
+  .btn-row{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    animation:fadeUp .8s ease .45s both;
   }
-  .btn-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
   .btn{
-    display:inline-block;padding:13px 28px;border-radius:6px;font-weight:700;font-size:15px;
+    display:inline-block;padding:14px 30px;border-radius:999px;font-weight:700;font-size:15px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
   }
-  .btn-gold{background:var(--gold);color:var(--charcoal);}
-  .btn-gold:hover{background:#d6912f;}
-  .btn-outline{border:2px solid #fff;color:#fff;}
-  .btn-outline:hover{background:#fff;color:var(--dark-red);}
-
-  section{padding:70px 0;}
-  h2.section-title{
-    font-size:32px;text-align:center;font-weight:800;margin-bottom:8px;color:var(--dark-red);
+  .btn-gold{
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    color:var(--ink);box-shadow:0 8px 22px rgba(255,183,3,.35);
   }
-  p.section-sub{text-align:center;color:var(--gray);margin-bottom:44px;font-size:16px;}
+  .btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(255,183,3,.45);}
+  .btn-outline{
+    border:2px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.06);
+    backdrop-filter:blur(6px);
+  }
+  .btn-outline:hover{background:#fff;color:var(--dark-red);transform:translateY(-3px);}
 
   /* About */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
-  .about-photo{height:320px;}
-  .about-text p{margin-bottom:16px;color:var(--gray);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+  .about-photo-wrap{position:relative;}
+  .about-photo-wrap::before{
+    content:'';position:absolute;top:-24px;right:-24px;width:180px;height:180px;
+    background:radial-gradient(circle, var(--gold) 0%, transparent 70%);
+    opacity:.35;filter:blur(6px);z-index:0;border-radius:50%;
+  }
+  .about-photo{height:340px;position:relative;z-index:1;}
+  .about-photo:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+  .about-text p{margin-bottom:16px;color:var(--gray);font-size:16px;}
 
   /* Menu */
   .menu-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
   }
   .menu-card{
-    background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.08);
+    background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);
+    position:relative;transition:transform .35s ease, box-shadow .35s ease;
   }
-  .menu-card .photo-placeholder{height:150px;border-radius:0;}
-  .menu-card-body{padding:18px 20px;}
-  .menu-card-body h3{font-size:19px;margin-bottom:8px;color:var(--dark-red);}
+  .menu-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .menu-card .photo-placeholder{height:165px;border-radius:0;}
+  .menu-card:hover .photo-placeholder{transform:scale(1.05);}
+  .menu-card-img-wrap{overflow:hidden;}
+  .menu-card-body{padding:20px 22px 22px;}
+  .menu-card-body h3{font-size:19px;margin-bottom:8px;color:var(--ink);font-weight:700;}
   .menu-card-body p{color:var(--gray);font-size:14px;}
-  .menu-cta{text-align:center;margin-top:44px;}
+  .menu-badge{
+    position:absolute;top:14px;left:14px;z-index:2;
+    background:linear-gradient(135deg,var(--flame-1),var(--flame-2));color:#fff;
+    font-size:11.5px;font-weight:700;padding:6px 12px;border-radius:999px;letter-spacing:.3px;
+    box-shadow:0 4px 12px rgba(200,29,15,.35);
+  }
+  .menu-cta{text-align:center;margin-top:48px;}
   .menu-note{
-    text-align:center;color:var(--gray);font-size:14px;margin-top:14px;
+    text-align:center;color:var(--gray);font-size:14px;margin-top:16px;
   }
 
   /* Gallery */
   .gallery-grid{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
   }
-  .gallery-grid .photo-placeholder{height:200px;}
+  .gallery-grid .photo-placeholder{height:210px;cursor:pointer;}
+  .gallery-grid .photo-placeholder:hover{transform:scale(1.03);box-shadow:var(--shadow-lg);}
 
   /* Hours & Location */
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
-  .hours-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);}
-  .hours-table td{padding:12px 20px;border-bottom:1px solid #f0e6d6;font-size:15px;}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;}
+  .hours-table{width:100%;border-collapse:collapse;background:#fff;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);}
+  .hours-table td{padding:14px 22px;border-bottom:1px solid #f3e8d8;font-size:15px;}
   .hours-table tr:last-child td{border-bottom:none;}
-  .hours-table td:first-child{font-weight:700;color:var(--dark-red);}
-  .map-placeholder{height:280px;margin-top:20px;}
-  .contact-box{background:#fff;border-radius:10px;padding:26px;box-shadow:0 3px 14px rgba(0,0,0,.06);margin-top:0;}
-  .contact-box p{margin-bottom:10px;font-size:15px;}
-  .contact-box strong{color:var(--dark-red);}
+  .hours-table tr:hover{background:#fff8ee;}
+  .hours-table td:first-child{font-weight:700;color:var(--red);border-left:3px solid var(--gold);}
+  .map-placeholder{height:300px;margin-top:22px;}
+  .contact-box{background:#fff;border-radius:20px;padding:28px;box-shadow:var(--shadow);margin-top:0;}
+  .contact-box p{margin-bottom:12px;font-size:15px;}
+  .contact-box strong{color:var(--red);}
 
   /* Reviews */
-  .reviews{background:var(--charcoal);color:#fff;text-align:center;}
-  .reviews h2{color:#fff;}
-  .review-cta{
-    display:inline-block;margin-top:20px;background:#d32323;color:#fff;padding:12px 26px;border-radius:6px;font-weight:700;
+  .reviews{
+    background:linear-gradient(135deg, var(--ink), var(--charcoal));
+    color:#fff;text-align:center;position:relative;
   }
-  .review-cta:hover{background:#a91b1b;}
+  .reviews h2{color:#fff;}
+  .stars{color:var(--gold);font-size:24px;letter-spacing:4px;margin-bottom:18px;}
+  .reviews p.lead{color:#d8ccc0;max-width:600px;margin:0 auto;font-size:16px;}
+  .review-cta{
+    display:inline-block;margin-top:24px;
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    color:var(--ink);padding:13px 28px;border-radius:999px;font-weight:700;
+    box-shadow:0 8px 22px rgba(255,183,3,.3);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .review-cta:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(255,183,3,.4);}
 
   /* Footer */
-  footer{background:#171210;color:#cfc4b8;padding:44px 0 26px;text-align:center;font-size:14px;}
-  footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:18px;flex-wrap:wrap;}
+  footer{
+    background:var(--ink);color:#b8ab9e;padding:50px 0 28px;text-align:center;font-size:14px;
+    border-top:3px solid;border-image:linear-gradient(90deg,var(--gold),var(--flame-2)) 1;
+  }
+  footer .footer-links{display:flex;justify-content:center;gap:26px;margin-bottom:20px;flex-wrap:wrap;}
+  footer a{font-weight:600;}
   footer a:hover{color:var(--gold);}
-  footer .fine{margin-top:18px;color:#7d726a;font-size:12px;}
+  footer .fine{margin-top:20px;color:#6f645b;font-size:12px;}
 
   @media(max-width:800px){
     .about-grid,.info-grid{grid-template-columns:1fr;}
     .menu-grid{grid-template-columns:1fr 1fr;}
     .gallery-grid{grid-template-columns:1fr 1fr;}
-    .hero h1{font-size:32px;}
+    .hero h1{font-size:34px;}
     nav ul{display:none;}
   }
 </style>
@@ -177,8 +288,9 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <h1>NaNum Chicken Factory</h1>
-    <p class="tag">Hand-Breaded Wings &amp; Tenders &bull; Douglasville, GA</p>
+    <span class="hero-badge">🔥 Douglasville, GA &bull; Open Late</span>
+    <h1>Hand-Breaded <span class="accent">Wings</span> &amp; Tenders</h1>
+    <p class="tag">Fresh, made-to-order fried chicken, gyros, burgers &amp; more</p>
 
     <img class="hero-photo" src="images/store-img.png" alt="NaNum Chicken Factory">
 
@@ -193,10 +305,14 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container about-grid">
-    <img src="images/prep2-img.png" alt="">
- 
+    <div class="about-photo-wrap">
+      <div class="about-photo photo-placeholder">
+        [ INSERT PHOTO: Kitchen / food prep / dining area ]
+      </div>
+    </div>
     <div class="about-text">
-      <h2 class="section-title" style="text-align:left;">Our Story</h2>
+      <span class="eyebrow align-left">Who We Are</span>
+      <h2 class="section-title align-left">Our Story</h2>
       <p>NaNum Chicken Factory serves up hand-breaded fried chicken, wings, and tenders right here in Douglasville. From classic wing flavors like hot honey garlic and lemon pepper to hearty Philly cheesesteaks, gyros, and burgers, we've got something for every craving &mdash; late into the night.</p>
       <p>Every order is made fresh to order, whether you're stopping in, calling ahead, or ordering online for pickup or delivery.</p>
       <p><em>[ Add a short paragraph here about what makes NaNum Chicken Factory special &mdash; family history, signature sauce, community roots, etc. ]</em></p>
@@ -207,56 +323,58 @@
 <!-- MENU -->
 <section id="menu" style="background:#fff;">
   <div class="container">
+    <span class="eyebrow">What's Cooking</span>
     <h2 class="section-title">Our Menu</h2>
     <p class="section-sub">A few of our most popular categories &mdash; full menu and pricing available online</p>
 
     <div class="menu-grid">
       <div class="menu-card">
+        <span class="menu-badge">🔥 Fan Favorite</span>
         <div class="photo-placeholder">[ INSERT PHOTO: Wings ]</div>
         <div class="menu-card-body">
-          <h3>Wings</h3>
+          <h3>🍗 Wings</h3>
           <p>6, 10, 15, 20, 30, 50, 75 &amp; 100-piece orders. Choose from our full lineup of house-made sauces, including hot honey garlic and lemon pepper.</p>
         </div>
       </div>
       <div class="menu-card">
         <div class="photo-placeholder">[ INSERT PHOTO: Chicken Tenders ]</div>
         <div class="menu-card-body">
-          <h3>Chicken Tenders</h3>
+          <h3>🍽️ Chicken Tenders</h3>
           <p>Crispy, hand-breaded tenders served on their own or as a combo with fries and a drink.</p>
         </div>
       </div>
       <div class="menu-card">
         <div class="photo-placeholder">[ INSERT PHOTO: Gyro ]</div>
         <div class="menu-card-body">
-          <h3>Gyros</h3>
+          <h3>🌯 Gyros</h3>
           <p>Beef or chicken gyro meat, wrapped fresh with all the classic fixings.</p>
         </div>
       </div>
       <div class="menu-card">
         <div class="photo-placeholder">[ INSERT PHOTO: Philly Cheesesteak ]</div>
         <div class="menu-card-body">
-          <h3>Philly Cheesesteaks</h3>
+          <h3>🧀 Philly Cheesesteaks</h3>
           <p>Loaded philly sandwiches, served hot and fresh.</p>
         </div>
       </div>
       <div class="menu-card">
         <div class="photo-placeholder">[ INSERT PHOTO: Burgers ]</div>
         <div class="menu-card-body">
-          <h3>Burgers &amp; Sandwiches</h3>
+          <h3>🍔 Burgers &amp; Sandwiches</h3>
           <p>Burgers, chicken tender sandwiches, subs, and Reubens.</p>
         </div>
       </div>
       <div class="menu-card">
-        <img src="images/fish-img.jpg" alt="">
+        <div class="photo-placeholder">[ INSERT PHOTO: Fish & Shrimp ]</div>
         <div class="menu-card-body">
-          <h3>Fish &amp; Shrimp</h3>
+          <h3>🍤 Fish &amp; Shrimp</h3>
           <p>Fried fish and shrimp plates, plus fried rice, salads, and sides.</p>
         </div>
       </div>
     </div>
 
     <div class="menu-cta">
-      <a class="btn btn-gold" href="https://www.yelp.com/menu/chicken-factory-douglasville" target="_blank" rel="noopener">View Full Menu on Yelp</a>
+      <a class="btn btn-gold" href="https://www.yelp.com/menu/chicken-factory-douglasville" target="_blank" rel="noopener" style="box-shadow:0 8px 22px rgba(255,183,3,.3);">View Full Menu on Yelp</a>
       <p class="menu-note">[ Note: Add current prices once confirmed — full item-by-item pricing wasn't available from public listings. ]</p>
     </div>
   </div>
@@ -265,6 +383,7 @@
 <!-- GALLERY -->
 <section id="gallery">
   <div class="container">
+    <span class="eyebrow">Take A Look</span>
     <h2 class="section-title">Gallery</h2>
     <p class="section-sub">A look inside NaNum Chicken Factory</p>
     <div class="gallery-grid">
@@ -282,7 +401,8 @@
 <section id="hours" style="background:#fff;">
   <div class="container info-grid">
     <div>
-      <h2 class="section-title" style="text-align:left;">Hours</h2>
+      <span class="eyebrow align-left">Visit Us</span>
+      <h2 class="section-title align-left">Hours</h2>
       <table class="hours-table">
         <tr><td>Sunday</td><td>11:00 AM &ndash; 10:00 PM</td></tr>
         <tr><td>Monday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
@@ -292,13 +412,14 @@
         <tr><td>Friday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
         <tr><td>Saturday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
       </table>
-      <div class="contact-box" style="margin-top:24px;">
-        <p><strong>Address:</strong> 2134 Fairburn Rd, Douglasville, GA 30135</p>
-        <p><strong>Phone:</strong> <a href="tel:+16783247862">(678) 324-7862</a></p>
+      <div class="contact-box" style="margin-top:26px;">
+        <p>📍 <strong>Address:</strong> 2134 Fairburn Rd, Douglasville, GA 30135</p>
+        <p>☎️ <strong>Phone:</strong> <a href="tel:+16783247862">(678) 324-7862</a></p>
       </div>
     </div>
     <div>
-      <h2 class="section-title" style="text-align:left;">Find Us</h2>
+      <span class="eyebrow align-left">&nbsp;</span>
+      <h2 class="section-title align-left">Find Us</h2>
       <div class="map-placeholder photo-placeholder">
         [ INSERT MAP EMBED: Google Maps for 2134 Fairburn Rd, Douglasville, GA 30135 ]
       </div>
@@ -309,8 +430,10 @@
 <!-- REVIEWS -->
 <section class="reviews">
   <div class="container">
+    <span class="eyebrow" style="color:var(--gold);">5-Star Flavor</span>
     <h2 class="section-title">What Customers Are Saying</h2>
-    <p style="color:#cfc4b8;max-width:600px;margin:0 auto;">Read reviews and see photos from real customers on Yelp.</p>
+    <div class="stars">★★★★★</div>
+    <p class="lead">Read reviews and see photos from real customers on Yelp.</p>
     <a class="review-cta" href="https://www.yelp.com/biz/chicken-factory-douglasville" target="_blank" rel="noopener">Read Our Reviews on Yelp</a>
   </div>
 </section>
