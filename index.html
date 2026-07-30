@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NaNum Chicken Factory | Douglasville, GA</title>
+<style>
+  :root{
+    --red:#b6231c;
+    --dark-red:#7a1712;
+    --gold:#e8a13c;
+    --cream:#fff8ee;
+    --charcoal:#221b17;
+    --gray:#5c5450;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI', Helvetica, Arial, sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* Photo placeholder */
+  .photo-placeholder{
+    background:repeating-linear-gradient(45deg,#eee0cc,#eee0cc 10px,#f5ead9 10px,#f5ead9 20px);
+    border:2px dashed #c9a875;
+    color:#8a6d42;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:14px;
+    font-weight:600;
+    border-radius:8px;
+    padding:20px;
+  }
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:var(--charcoal);
+    color:#fff;
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{
+    font-size:22px;font-weight:800;letter-spacing:.5px;
+    color:var(--gold);
+  }
+  .logo span{color:#fff;}
+  nav ul{list-style:none;display:flex;gap:28px;}
+  nav a{font-weight:600;font-size:15px;}
+  nav a:hover{color:var(--gold);}
+  .nav-cta{
+    background:var(--red);color:#fff;padding:9px 18px;border-radius:6px;font-weight:700;
+  }
+  .nav-cta:hover{background:var(--dark-red);}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:70px 0 90px;
+    background:linear-gradient(135deg, var(--dark-red), var(--red));
+    color:#fff;
+    text-align:center;
+  }
+  .hero h1{font-size:44px;font-weight:900;margin-bottom:12px;}
+  .hero p.tag{font-size:19px;color:var(--gold);font-weight:600;margin-bottom:28px;}
+  .hero-photo{
+    max-width:900px;margin:0 auto 32px;height:auto;
+  }
+  /* Only applies while it's still a text placeholder box; once you swap
+     in a real <img class="hero-photo">, it drops away and the image
+     displays at its own natural size (scaled to fit max-width:900px). */
+  .hero-photo.photo-placeholder{
+    min-height:260px;
+  }
+  .btn-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 28px;border-radius:6px;font-weight:700;font-size:15px;
+  }
+  .btn-gold{background:var(--gold);color:var(--charcoal);}
+  .btn-gold:hover{background:#d6912f;}
+  .btn-outline{border:2px solid #fff;color:#fff;}
+  .btn-outline:hover{background:#fff;color:var(--dark-red);}
+
+  section{padding:70px 0;}
+  h2.section-title{
+    font-size:32px;text-align:center;font-weight:800;margin-bottom:8px;color:var(--dark-red);
+  }
+  p.section-sub{text-align:center;color:var(--gray);margin-bottom:44px;font-size:16px;}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;}
+  .about-photo{height:320px;}
+  .about-text p{margin-bottom:16px;color:var(--gray);}
+
+  /* Menu */
+  .menu-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  .menu-card{
+    background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.08);
+  }
+  .menu-card .photo-placeholder{height:150px;border-radius:0;}
+  .menu-card-body{padding:18px 20px;}
+  .menu-card-body h3{font-size:19px;margin-bottom:8px;color:var(--dark-red);}
+  .menu-card-body p{color:var(--gray);font-size:14px;}
+  .menu-cta{text-align:center;margin-top:44px;}
+  .menu-note{
+    text-align:center;color:var(--gray);font-size:14px;margin-top:14px;
+  }
+
+  /* Gallery */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  .gallery-grid .photo-placeholder{height:200px;}
+
+  /* Hours & Location */
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  .hours-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.06);}
+  .hours-table td{padding:12px 20px;border-bottom:1px solid #f0e6d6;font-size:15px;}
+  .hours-table tr:last-child td{border-bottom:none;}
+  .hours-table td:first-child{font-weight:700;color:var(--dark-red);}
+  .map-placeholder{height:280px;margin-top:20px;}
+  .contact-box{background:#fff;border-radius:10px;padding:26px;box-shadow:0 3px 14px rgba(0,0,0,.06);margin-top:0;}
+  .contact-box p{margin-bottom:10px;font-size:15px;}
+  .contact-box strong{color:var(--dark-red);}
+
+  /* Reviews */
+  .reviews{background:var(--charcoal);color:#fff;text-align:center;}
+  .reviews h2{color:#fff;}
+  .review-cta{
+    display:inline-block;margin-top:20px;background:#d32323;color:#fff;padding:12px 26px;border-radius:6px;font-weight:700;
+  }
+  .review-cta:hover{background:#a91b1b;}
+
+  /* Footer */
+  footer{background:#171210;color:#cfc4b8;padding:44px 0 26px;text-align:center;font-size:14px;}
+  footer .footer-links{display:flex;justify-content:center;gap:24px;margin-bottom:18px;flex-wrap:wrap;}
+  footer a:hover{color:var(--gold);}
+  footer .fine{margin-top:18px;color:#7d726a;font-size:12px;}
+
+  @media(max-width:800px){
+    .about-grid,.info-grid{grid-template-columns:1fr;}
+    .menu-grid{grid-template-columns:1fr 1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .hero h1{font-size:32px;}
+    nav ul{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap container">
+    <div class="logo"><span>NaNum</span> Chicken Factory</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#hours">Hours & Location</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="tel:+16783247862">Call (678) 324-7862</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>NaNum Chicken Factory</h1>
+    <p class="tag">Hand-Breaded Wings &amp; Tenders &bull; Douglasville, GA</p>
+
+    <img class="hero-photo" src="images/store-img.png" alt="NaNum Chicken Factory">
+
+    <div class="btn-row">
+      <a class="btn btn-gold" href="https://chickenfactory1.kwickmenu.com/" target="_blank" rel="noopener">Order Online</a>
+      <a class="btn btn-outline" href="#menu">View Menu</a>
+      <a class="btn btn-outline" href="https://www.yelp.com/biz/chicken-factory-douglasville" target="_blank" rel="noopener">See Us on Yelp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <img src="images/prep2-img.png" alt="">
+ 
+    <div class="about-text">
+      <h2 class="section-title" style="text-align:left;">Our Story</h2>
+      <p>NaNum Chicken Factory serves up hand-breaded fried chicken, wings, and tenders right here in Douglasville. From classic wing flavors like hot honey garlic and lemon pepper to hearty Philly cheesesteaks, gyros, and burgers, we've got something for every craving &mdash; late into the night.</p>
+      <p>Every order is made fresh to order, whether you're stopping in, calling ahead, or ordering online for pickup or delivery.</p>
+      <p><em>[ Add a short paragraph here about what makes NaNum Chicken Factory special &mdash; family history, signature sauce, community roots, etc. ]</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" style="background:#fff;">
+  <div class="container">
+    <h2 class="section-title">Our Menu</h2>
+    <p class="section-sub">A few of our most popular categories &mdash; full menu and pricing available online</p>
+
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="photo-placeholder">[ INSERT PHOTO: Wings ]</div>
+        <div class="menu-card-body">
+          <h3>Wings</h3>
+          <p>6, 10, 15, 20, 30, 50, 75 &amp; 100-piece orders. Choose from our full lineup of house-made sauces, including hot honey garlic and lemon pepper.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="photo-placeholder">[ INSERT PHOTO: Chicken Tenders ]</div>
+        <div class="menu-card-body">
+          <h3>Chicken Tenders</h3>
+          <p>Crispy, hand-breaded tenders served on their own or as a combo with fries and a drink.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="photo-placeholder">[ INSERT PHOTO: Gyro ]</div>
+        <div class="menu-card-body">
+          <h3>Gyros</h3>
+          <p>Beef or chicken gyro meat, wrapped fresh with all the classic fixings.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="photo-placeholder">[ INSERT PHOTO: Philly Cheesesteak ]</div>
+        <div class="menu-card-body">
+          <h3>Philly Cheesesteaks</h3>
+          <p>Loaded philly sandwiches, served hot and fresh.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="photo-placeholder">[ INSERT PHOTO: Burgers ]</div>
+        <div class="menu-card-body">
+          <h3>Burgers &amp; Sandwiches</h3>
+          <p>Burgers, chicken tender sandwiches, subs, and Reubens.</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <img src="images/fish-img.jpg" alt="">
+        <div class="menu-card-body">
+          <h3>Fish &amp; Shrimp</h3>
+          <p>Fried fish and shrimp plates, plus fried rice, salads, and sides.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-cta">
+      <a class="btn btn-gold" href="https://www.yelp.com/menu/chicken-factory-douglasville" target="_blank" rel="noopener">View Full Menu on Yelp</a>
+      <p class="menu-note">[ Note: Add current prices once confirmed — full item-by-item pricing wasn't available from public listings. ]</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <h2 class="section-title">Gallery</h2>
+    <p class="section-sub">A look inside NaNum Chicken Factory</p>
+    <div class="gallery-grid">
+      <div class="photo-placeholder">[ INSERT PHOTO 1 ]</div>
+      <div class="photo-placeholder">[ INSERT PHOTO 2 ]</div>
+      <div class="photo-placeholder">[ INSERT PHOTO 3 ]</div>
+      <div class="photo-placeholder">[ INSERT PHOTO 4 ]</div>
+      <div class="photo-placeholder">[ INSERT PHOTO 5 ]</div>
+      <div class="photo-placeholder">[ INSERT PHOTO 6 ]</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="hours" style="background:#fff;">
+  <div class="container info-grid">
+    <div>
+      <h2 class="section-title" style="text-align:left;">Hours</h2>
+      <table class="hours-table">
+        <tr><td>Sunday</td><td>11:00 AM &ndash; 10:00 PM</td></tr>
+        <tr><td>Monday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
+        <tr><td>Tuesday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
+        <tr><td>Wednesday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
+        <tr><td>Thursday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
+        <tr><td>Friday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
+        <tr><td>Saturday</td><td>11:00 AM &ndash; 2:00 AM</td></tr>
+      </table>
+      <div class="contact-box" style="margin-top:24px;">
+        <p><strong>Address:</strong> 2134 Fairburn Rd, Douglasville, GA 30135</p>
+        <p><strong>Phone:</strong> <a href="tel:+16783247862">(678) 324-7862</a></p>
+      </div>
+    </div>
+    <div>
+      <h2 class="section-title" style="text-align:left;">Find Us</h2>
+      <div class="map-placeholder photo-placeholder">
+        [ INSERT MAP EMBED: Google Maps for 2134 Fairburn Rd, Douglasville, GA 30135 ]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+    <h2 class="section-title">What Customers Are Saying</h2>
+    <p style="color:#cfc4b8;max-width:600px;margin:0 auto;">Read reviews and see photos from real customers on Yelp.</p>
+    <a class="review-cta" href="https://www.yelp.com/biz/chicken-factory-douglasville" target="_blank" rel="noopener">Read Our Reviews on Yelp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#hours">Hours &amp; Location</a>
+      <a href="https://chickenfactory1.kwickmenu.com/" target="_blank" rel="noopener">Order Online</a>
+      <a href="https://www.yelp.com/biz/chicken-factory-douglasville" target="_blank" rel="noopener">Yelp Page</a>
+    </div>
+    <div>NaNum Chicken Factory &bull; 2134 Fairburn Rd, Douglasville, GA 30135 &bull; (678) 324-7862</div>
+    <div class="fine">This is a first draft site. Replace placeholder photos, verify hours/pricing, and update copy before publishing.</div>
+  </div>
+</footer>
+
+</body>
+</html>
