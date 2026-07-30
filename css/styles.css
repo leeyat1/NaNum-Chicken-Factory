@@ -272,6 +272,9 @@ footer .fine{margin-top:20px;color:#6f645b;font-size:12px;}
   .hero-badge{font-size:12px;}
   .hero p.tag{font-size:16px;}
 
+  .nav-wrap{flex-direction:column;align-items:center;gap:10px;}
+  .nav-controls{width:100%;justify-content:center;}
+
   nav{
     order:4;width:100%;display:none;
   }
@@ -281,7 +284,7 @@ footer .fine{margin-top:20px;color:#6f645b;font-size:12px;}
     border-radius:14px;margin-top:16px;overflow:hidden;
   }
   nav ul li{width:100%;}
-  nav ul a{display:block;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);}
+  nav ul a{display:block;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);text-align:center;}
   nav ul a::after{display:none;}
 
   .nav-toggle:checked ~ nav{display:block;}
